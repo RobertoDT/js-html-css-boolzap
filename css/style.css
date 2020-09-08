@@ -1,0 +1,195 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+/*MIX*/
+.darkgrey{
+  color: darkgrey;
+}
+.lightgrey{
+  color: lightgrey;
+}
+.fs-20{
+  font-size: 20px;
+}
+.fs-16{
+  font-size: 16px;
+}
+.border-left{
+  border-left: 1px solid darkgrey;
+}
+
+/*MIX*/
+
+
+
+.sfondo{
+  position: relative;
+}
+.sfondo-top{
+  height: 20vh;
+  width: 100%;
+  background-color: #00BFA5;
+}
+.sfondo-bottom{
+  height: 80vh;
+  width: 100%;
+  background-image: linear-gradient(#ECE5DD, #d2dbdb);
+}
+
+.wrapper{
+  width: 1800px;
+  height: 90vh;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.sezione-contatti{
+  width: 40%;
+  height: 100%;
+}
+.header-contatti{
+  height: 100px;
+  width: 100%;
+  background-color: #EDEDED;
+  position: relative;
+}
+.header-contatti img{
+  height: 60px;
+  border-radius: 50%;
+  margin: 20px 15px;
+}
+.header-contatti-list{
+  display: inline-block;
+  float: right;
+}
+.header-contatti-list li{
+  display: inline-block;
+  line-height: 100px;
+}
+.header-contatti-list i{
+  width: 50px;
+  color: darkgrey;
+  font-size: 25px;
+  line-height: 100px;
+}
+
+.notifiche{
+  height: 100px;
+  width: 100%;
+  background-color: #8edafc;
+}
+
+.icona{
+  background-color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 25px;
+  margin: 20px 10px;
+}
+
+.notifiche-right{
+  display: inline-block;
+  vertical-align: sub;
+}
+
+.sezione-cerca{
+  height: 60px;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+}
+.ricerca{
+  width: 100%;
+  height: 100%;
+  border: 2px solid lightgrey;
+  padding: 5px;
+  margin: auto;
+}
+.ricerca i{
+  margin: 0 20px;
+  vertical-align: middle;
+}
+.cerca{
+  width: 90%;
+  border: none;
+  padding: 5px;
+}
+
+.sezione-chat{
+  width: 60%;
+  height: 100%;
+  background-color: green;
+}
+
+.lista-contatti{
+  height: calc(100% - (100px + 100px + 60px));
+  overflow-y: auto;
+}
+
+.contatto{
+  height: 80px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  position: relative;
+}
+.contatto img{
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px 15px;
+}
+.nome-contatto{
+  margin-top: 20px;
+}
+.orario{
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  color:
+}
+
+.utente-corrente{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.chat-box{
+  width: 100%;
+  height: calc(100% - (100px + 100px));
+  background-image: url(../img/mine.jpg);
+}
+.messaggio-box{
+  width: 100%;
+  height: 100px;
+  background-color: #ECE5DD;
+}
+
+.messaggio-box{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+.messaggio-box i{
+  font-size: 30px;
+  padding: 20px;
+}
+.messaggio-box input {
+  width: 80%;
+  
+  border: none;
+  border-radius: 5px;
+  padding-left: 20px;
+}
