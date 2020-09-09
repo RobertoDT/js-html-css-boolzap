@@ -32,7 +32,6 @@ body{
 }
 
 .container {
-  background-color: green;
   max-width: 1360px;
   width: 100%;
   height: calc(100% - 50px);
@@ -54,7 +53,6 @@ body{
   width: 35%;
 }
 .col-right {
-  background-color: orange;
   width: 65%;
 }
 

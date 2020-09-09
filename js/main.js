@@ -14,14 +14,19 @@ $(document).ready(function() {
         sendMessage();
         setTimeout(rispostaCpu,1000);
 
-
       }
     }
   );
 
+  $("#search").keyup(function(event){
+    cercaContatto();
+
+  });
+
 
 });
 
+/*FUNZIONE INVIO MESSAGGIO UTENTE*/
 function sendMessage() {
   var inputText = $("#input-message").val();
 
@@ -42,6 +47,7 @@ function sendMessage() {
   }
 }
 
+/*FUNZIONE AUTORISPOSTA CPU*/
 function rispostaCpu(){
   var templateMessageCpu = $(".templates .message-row").clone();
 
@@ -55,4 +61,24 @@ function rispostaCpu(){
 
   templateMessageCpu.find(".message-text").text("ok");
   $(".chat").append(templateMessageCpu);
+}
+
+//FUNZIONE RICERCA CONTATTI
+function cercaContatto(){
+  var lettera = $("#search").val();
+  lettera = lettera.toLowerCase();
+
+  $(".contact-name").each(function(){
+    //ad ogni giro leggo il nome
+    var nomeCorrente = $(this).text();
+    nomeCorrente = nomeCorrente.toLowerCase();
+    var trovato = nomeCorrente.includes(lettera); //restituisce vero o falso
+
+    if(trovato){
+      $(this).parents(".contact").show();
+    } else {
+      $(this).parents(".contact").hide();
+    }
+
+  });
 }
