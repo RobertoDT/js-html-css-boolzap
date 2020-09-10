@@ -38,10 +38,12 @@ $(document).ready(function() {
         var indexChat = chatCorrente + 2;
         $(".chat:nth-child("+indexChat+")").addClass("active");
 
-        //COLLEGAMENTO CONTATTO E CHAT CORRISPONDENTE
+      }
+    );
 
-        
-
+    $(".message-angle").click(
+      function(){
+        $(this).children(".dropdown-menu").toggle();
       }
     );
 
@@ -60,7 +62,8 @@ function sendMessage() {
     templateMessage.find(".message-time").text(time);
     templateMessage.addClass("sent");
 
-    $(".chat").append(templateMessage);
+
+    $(".chat.active").append(templateMessage);
     setTimeout(rispostaCpu,1000);
     $("#input-message").val("");
   }
@@ -75,7 +78,7 @@ function rispostaCpu(){
   templateMessageCpu.find(".message-time").text(time);
 
   templateMessageCpu.find(".message-text").text("ok");
-  $(".chat").append(templateMessageCpu);
+  $(".chat.active").append(templateMessageCpu);
 }
 
 //FUNZIONE RICERCA CONTATTI
