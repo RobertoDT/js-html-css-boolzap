@@ -3,7 +3,6 @@ $(document).ready(function() {
   $(".send-message").click(
     function() {
       sendMessage();
-      setTimeout(rispostaCpu,1000);
 
     }
   );
@@ -12,7 +11,6 @@ $(document).ready(function() {
     function(event) {
       if(event.which == 13) {
         sendMessage();
-        setTimeout(rispostaCpu,1000);
 
       }
     }
@@ -23,6 +21,18 @@ $(document).ready(function() {
 
   });
 
+  /*AL CLICK SU UN <li> OTTENGO L'HEADER CORRISPONDENTE AL CONTATTO SELEZIONATO*/
+  $(".contacts li").click(
+      function(){
+        var contattoCorrente = $(this).index();
+        $(".avatar").removeClass("active");
+        var indexContatto = contattoCorrente + 1;
+        $(".avatar:nth-child("+indexContatto+")").addClass("active");
+
+        $(".contacts li").removeClass("active");
+        $(this).addClass("active");
+      }
+    );
 
 });
 
@@ -33,16 +43,14 @@ function sendMessage() {
   if(inputText != "") {
     var templateMessage = $(".templates .message-row").clone();
 
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var time = hours + ":" + minutes;
+    var time = getTime();
 
     templateMessage.find(".message-text").text(inputText);
     templateMessage.find(".message-time").text(time);
     templateMessage.addClass("sent");
 
     $(".chat").append(templateMessage);
+    setTimeout(rispostaCpu,1000);
     $("#input-message").val("");
   }
 }
@@ -51,13 +59,9 @@ function sendMessage() {
 function rispostaCpu(){
   var templateMessageCpu = $(".templates .message-row").clone();
 
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var time = hours + ":" + minutes;
+  var time = getTime();
 
   templateMessageCpu.find(".message-time").text(time);
-  templateMessageCpu.addClass("ricevuta");
 
   templateMessageCpu.find(".message-text").text("ok");
   $(".chat").append(templateMessageCpu);
@@ -81,4 +85,17 @@ function cercaContatto(){
     }
 
   });
+}
+
+//FUNZIONE CHE RESTITUISCE L'ORARIO
+function getTime(){
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+
+  if(minutes < 10){
+    minutes = "0" + minutes;
+  }
+
+  return hours + ":" + minutes;
 }
