@@ -195,6 +195,7 @@ body{
 /* COL RIGTH */
 
 /* chat */
+
 .chat {
   background-image: url(../img/mine.jpg);
   height: calc(100% - 140px);

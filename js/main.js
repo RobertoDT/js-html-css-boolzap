@@ -24,13 +24,24 @@ $(document).ready(function() {
   /*AL CLICK SU UN <li> OTTENGO L'HEADER CORRISPONDENTE AL CONTATTO SELEZIONATO*/
   $(".contacts li").click(
       function(){
+        //CONTATTO
         var contattoCorrente = $(this).index();
         $(".avatar").removeClass("active");
         var indexContatto = contattoCorrente + 1;
         $(".avatar:nth-child("+indexContatto+")").addClass("active");
-
         $(".contacts li").removeClass("active");
         $(this).addClass("active");
+
+        //CHAT-BOX
+        var chatCorrente = $(this).index();
+        $(".chat").removeClass("active");
+        var indexChat = chatCorrente + 2;
+        $(".chat:nth-child("+indexChat+")").addClass("active");
+
+        //COLLEGAMENTO CONTATTO E CHAT CORRISPONDENTE
+
+        
+
       }
     );
 
