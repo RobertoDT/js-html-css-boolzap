@@ -42,22 +42,16 @@ $(document).ready(function() {
     );
 
     //MENU A TENDINA
-    $(".message-angle").click(
-      function(){
-        $(this).parents(".message-row").children(".dropdown-menu").toggle();
-      }
-    );
+    $(document).on("click", ".message-angle", function(){
+      $(this).parents(".message-row").children(".dropdown-menu").toggle();
+    });
 
     //ELIMINAZIONE MESSAGGIO
-    $(".delete-message").click(
-      function(){
-        $(this).parents(".message-row").children(".message").remove();
-        $(this).parents(".message-row").children(".dropdown-menu").hide();
-      }
-    );
+    $(document).on("click", ".delete-message", function(){
+      $(this).parents(".message-row").children(".message").remove();
+      $(this).parents(".message-row").children(".dropdown-menu").hide();
 
-
-
+    });
 
 
 
@@ -76,7 +70,6 @@ function sendMessage() {
     templateMessage.find(".message-time").text(time);
     templateMessage.addClass("sent");
 
-
     $(".chat.active").append(templateMessage);
     setTimeout(rispostaCpu,1000);
     $("#input-message").val("");
@@ -90,8 +83,8 @@ function rispostaCpu(){
   var time = getTime();
 
   templateMessageCpu.find(".message-time").text(time);
-
   templateMessageCpu.find(".message-text").text("ok");
+  
   $(".chat.active").append(templateMessageCpu);
 }
 
@@ -111,7 +104,6 @@ function cercaContatto(){
     } else {
       $(this).parents(".contact").hide();
     }
-
   });
 }
 
