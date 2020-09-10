@@ -41,11 +41,25 @@ $(document).ready(function() {
       }
     );
 
+    //MENU A TENDINA
     $(".message-angle").click(
       function(){
-        $(this).children(".dropdown-menu").toggle();
+        $(this).parents(".message-row").children(".dropdown-menu").toggle();
       }
     );
+
+    //ELIMINAZIONE MESSAGGIO
+    $(".delete-message").click(
+      function(){
+        $(this).parents(".message-row").children(".message").remove();
+        $(this).parents(".message-row").children(".dropdown-menu").hide();
+      }
+    );
+
+
+
+
+
 
 });
 
