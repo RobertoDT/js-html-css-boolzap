@@ -35,6 +35,13 @@ $(document).ready(function() {
         $(".chat").removeClass("active");
         var indexChat = chatCorrente + 1;
         $(".chat:nth-child("+indexChat+")").addClass("active");
+
+        //ORARIO ULTIMO ACCESSO
+        // $("span").text(getTime);
+        // $(this).find(".contact-time").text(getTime);
+        // $(".contact-time").text(getTime);
+
+
       }
     );
 
@@ -77,6 +84,10 @@ function sendMessage() {
     //appare così l'ultimo messaggio inviato in basso nella chat
     var heightChatActive = $(".chat.active").prop("scrollHeight");
     $(".chats-wrapper").scrollTop(heightChatActive);
+
+    //printo messaggio utente come'ultimo messaggio nel riquadro del contatto e orario
+    $(".contact.active .contact-last-message").text(inputText);
+    $(".contact.active .contact-time").text(getTime);
   }
 }
 
@@ -87,7 +98,12 @@ function rispostaCpu(conversazioneActive){
   var time = getTime();
 
   templateMessageCpu.find(".message-time").text(time);
-  templateMessageCpu.find(".message-text").text("ok");
+  var ultimoMexRecente = templateMessageCpu.find(".message-text").text("ok");
+
+  //printo messaggio come'ultimo messaggio nel riquadro del contatto a sinistra e in alto e orario
+  $(".contact.active .contact-last-message").text(ultimoMexRecente.text());
+  $(".contact.active .contact-time").text(getTime);
+  $(".avatar.active span").text(getTime);
 
   //impedisco di trovare (in quel secondo) la risposta automatica in un'altra chat
   $(".chat:nth-child("+conversazioneActive+")").append(templateMessageCpu);
@@ -95,6 +111,8 @@ function rispostaCpu(conversazioneActive){
   //appare così l'ultimo messaggio inviato in basso nella chat
   var heightChatActive = $(".chat.active").prop("scrollHeight");
   $(".chats-wrapper").scrollTop(heightChatActive);
+
+
 }
 
 //FUNZIONE RICERCA CONTATTI
