@@ -2,14 +2,18 @@ $(document).ready(function() {
 
   $(".send-message").click(
     function() {
+      setTimeout(staScrivendo, 100);
       sendMessage();
+
     }
   );
 
   $("#input-message").keyup(
     function(event) {
       if(event.which == 13) {
+        setTimeout(staScrivendo, 100);
         sendMessage();
+
       }
     }
   );
@@ -18,6 +22,7 @@ $(document).ready(function() {
     cercaContatto();
 
   });
+
 
   /*AL CLICK SU UN CONTATTO OTTENGO LA CHAT CORRISPONDENTE*/
   $(".contacts li").click(
@@ -35,11 +40,6 @@ $(document).ready(function() {
         $(".chat").removeClass("active");
         var indexChat = chatCorrente + 1;
         $(".chat:nth-child("+indexChat+")").addClass("active");
-
-        //ORARIO ULTIMO ACCESSO
-        // $("span").text(getTime);
-        // $(this).find(".contact-time").text(getTime);
-        // $(".contact-time").text(getTime);
 
 
       }
@@ -78,7 +78,7 @@ function sendMessage() {
     //impedisco di trovare (in quel secondo) la risposta automatica in un'altra chat
     setTimeout(function() {
       rispostaCpu(conversazioneAttiva);
-    },1000);
+    },1500);
     $("#input-message").val("");
 
     //appare così l'ultimo messaggio inviato in basso nella chat
@@ -100,7 +100,7 @@ function rispostaCpu(conversazioneActive){
   templateMessageCpu.find(".message-time").text(time);
   var ultimoMexRecente = templateMessageCpu.find(".message-text").text("ok");
 
-  //printo messaggio come'ultimo messaggio nel riquadro del contatto a sinistra e in alto e orario
+  //printo orario e ultimo messaggio nel riquadro del contatto a sinistra e in alto
   $(".contact.active .contact-last-message").text(ultimoMexRecente.text());
   $(".contact.active .contact-time").text(getTime);
   $(".avatar.active span").text(getTime);
@@ -112,7 +112,8 @@ function rispostaCpu(conversazioneActive){
   var heightChatActive = $(".chat.active").prop("scrollHeight");
   $(".chats-wrapper").scrollTop(heightChatActive);
 
-
+  //ritorna la scritta ultimo accesso alle tot
+  $(".avatar.active .avatar-last-access").text("Ultimo accesso oggi alle " + time);
 }
 
 //FUNZIONE RICERCA CONTATTI
@@ -145,4 +146,9 @@ function getTime(){
   }
 
   return hours + ":" + minutes;
+}
+
+//FUNZIONE CHE FA VISUALIZZARE STA SCRIVENDO NELL'HEADER DELLA CHAT
+function staScrivendo(){
+  $(".avatar.active .avatar-last-access").text("sta scrivendo...");
 }
