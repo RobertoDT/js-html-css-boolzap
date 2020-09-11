@@ -3,7 +3,6 @@ $(document).ready(function() {
   $(".send-message").click(
     function() {
       sendMessage();
-
     }
   );
 
@@ -11,7 +10,6 @@ $(document).ready(function() {
     function(event) {
       if(event.which == 13) {
         sendMessage();
-
       }
     }
   );
@@ -21,7 +19,7 @@ $(document).ready(function() {
 
   });
 
-  /*AL CLICK SU UN <li> OTTENGO L'HEADER CORRISPONDENTE AL CONTATTO SELEZIONATO*/
+  /*AL CLICK SU UN CONTATTO OTTENGO LA CHAT CORRISPONDENTE*/
   $(".contacts li").click(
       function(){
         //CONTATTO
@@ -35,9 +33,8 @@ $(document).ready(function() {
         //CHAT-BOX
         var chatCorrente = $(this).index();
         $(".chat").removeClass("active");
-        var indexChat = chatCorrente + 2;
+        var indexChat = chatCorrente + 1;
         $(".chat:nth-child("+indexChat+")").addClass("active");
-
       }
     );
 
@@ -48,12 +45,8 @@ $(document).ready(function() {
 
     //ELIMINAZIONE MESSAGGIO
     $(document).on("click", ".delete-message", function(){
-      $(this).parents(".message-row").children(".message").remove();
-      $(this).parents(".message-row").children(".dropdown-menu").hide();
-
+      $(this).parents(".message-row").remove();
     });
-
-
 
 });
 
@@ -71,21 +64,37 @@ function sendMessage() {
     templateMessage.addClass("sent");
 
     $(".chat.active").append(templateMessage);
-    setTimeout(rispostaCpu,1000);
+
+    var conversazioneAttiva = $(".chat.active").index();
+    conversazioneAttiva += 1;
+
+    //impedisco di trovare (in quel secondo) la risposta automatica in un'altra chat
+    setTimeout(function() {
+      rispostaCpu(conversazioneAttiva);
+    },1000);
     $("#input-message").val("");
+
+    //appare così l'ultimo messaggio inviato in basso nella chat
+    var heightChatActive = $(".chat.active").prop("scrollHeight");
+    $(".chats-wrapper").scrollTop(heightChatActive);
   }
 }
 
 /*FUNZIONE AUTORISPOSTA CPU*/
-function rispostaCpu(){
+function rispostaCpu(conversazioneActive){
   var templateMessageCpu = $(".templates .message-row").clone();
 
   var time = getTime();
 
   templateMessageCpu.find(".message-time").text(time);
   templateMessageCpu.find(".message-text").text("ok");
-  
-  $(".chat.active").append(templateMessageCpu);
+
+  //impedisco di trovare (in quel secondo) la risposta automatica in un'altra chat
+  $(".chat:nth-child("+conversazioneActive+")").append(templateMessageCpu);
+
+  //appare così l'ultimo messaggio inviato in basso nella chat
+  var heightChatActive = $(".chat.active").prop("scrollHeight");
+  $(".chats-wrapper").scrollTop(heightChatActive);
 }
 
 //FUNZIONE RICERCA CONTATTI

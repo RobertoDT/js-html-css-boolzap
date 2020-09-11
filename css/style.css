@@ -40,8 +40,13 @@ body{
 .templates {
   display: none;
 }
+
 .templates-cpu{
   display: none;
+}
+
+.border{
+  border-left: 1px solid darkgrey;
 }
 /* COLS */
 
@@ -123,6 +128,9 @@ body{
   font-weight: normal;
   font-size: 18px;
 }
+.notification-text a{
+  color: darkgrey;
+}
 /* /notifications */
 
 /* search */
@@ -163,6 +171,10 @@ body{
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgrey;
+  cursor: pointer;
+}
+.contact.active{
+  background-color: lightgrey;
 }
 .contact:hover{
   background-color: lightgrey;
@@ -195,12 +207,14 @@ body{
 /* COL RIGTH */
 
 /* chat */
-
-.chat {
+.chats-wrapper{
   background-image: url(../img/mine.jpg);
   height: calc(100% - 140px);
-  padding: 50px;
   overflow-y: scroll;
+}
+.chat {
+  height: 100%;
+  padding: 50px;
   display: none;
 }
 .chat.active{
@@ -218,7 +232,7 @@ body{
   background-color: white;
   max-width: 350px;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px 30px 20px 20px;
 }
 .message-time {
   position: absolute;
@@ -229,8 +243,9 @@ body{
 }
 .message-angle{
   position: absolute;
-  top: 3px;
+  top: 17px;
   right: 10px;
+  color: #b1b1b1;
   display: none;
 }
 .message:hover .message-angle{
@@ -243,7 +258,7 @@ body{
   box-shadow: 5px 10px 18px #888888;
   white-space: nowrap;
   position: absolute;
-  top: 50px;
+  top: 100%;
   display: none;
 }
 .dropdown-menu ul{
